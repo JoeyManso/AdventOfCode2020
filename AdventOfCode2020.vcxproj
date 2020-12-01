@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Input\Day01.txt" />
+    <Text Include="Input\Day02.txt" />
+    <Text Include="Input\Day03.txt" />
+    <Text Include="Input\Day04.txt" />
+    <Text Include="Input\Day05.txt" />
+    <Text Include="Input\Day06.txt" />
+    <Text Include="Input\Day07.txt" />
+    <Text Include="Input\Day08.txt" />
+    <Text Include="Input\Day09.txt" />
+    <Text Include="Input\Day10.txt" />
+    <Text Include="Input\Day11.txt" />
+    <Text Include="Input\Day12.txt" />
+    <Text Include="Input\Day13.txt" />
+    <Text Include="Input\Day14.txt" />
+    <Text Include="Input\Day15.txt" />
+    <Text Include="Input\Day16.txt" />
+    <Text Include="Input\Day17.txt" />
+    <Text Include="Input\Day18.txt" />
+    <Text Include="Input\Day19.txt" />
+    <Text Include="Input\Day20.txt" />
+    <Text Include="Input\Day21.txt" />
+    <Text Include="Input\Day22.txt" />
+    <Text Include="Input\Day23.txt" />
+    <Text Include="Input\Day24.txt" />
+    <Text Include="Input\Day25.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\AdventOfCode2020.cpp" />
+    <ClCompile Include="Source\Day01.cpp" />
+    <ClCompile Include="Source\Day02.cpp" />
+    <ClCompile Include="Source\Day03.cpp" />
+    <ClCompile Include="Source\Day04.cpp" />
+    <ClCompile Include="Source\Day05.cpp" />
+    <ClCompile Include="Source\Day06.cpp" />
+    <ClCompile Include="Source\Day07.cpp" />
+    <ClCompile Include="Source\Day08.cpp" />
+    <ClCompile Include="Source\Day09.cpp" />
+    <ClCompile Include="Source\Day10.cpp" />
+    <ClCompile Include="Source\Day11.cpp" />
+    <ClCompile Include="Source\Day12.cpp" />
+    <ClCompile Include="Source\Day13.cpp" />
+    <ClCompile Include="Source\Day14.cpp" />
+    <ClCompile Include="Source\Day15.cpp" />
+    <ClCompile Include="Source\Day16.cpp" />
+    <ClCompile Include="Source\Day17.cpp" />
+    <ClCompile Include="Source\Day18.cpp" />
+    <ClCompile Include="Source\Day19.cpp" />
+    <ClCompile Include="Source\Day20.cpp" />
+    <ClCompile Include="Source\Day21.cpp" />
+    <ClCompile Include="Source\Day22.cpp" />
+    <ClCompile Include="Source\Day23.cpp" />
+    <ClCompile Include="Source\Day24.cpp" />
+    <ClCompile Include="Source\Day25.cpp" />
+    <ClCompile Include="Source\Days.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\AdventMath.h" />
+    <ClInclude Include="Headers\AdventTimer.h" />
+    <ClInclude Include="Headers\Days.h" />
+    <ClInclude Include="Headers\MD5.h" />
+    <ClInclude Include="Headers\Point2D.h" />
+    <ClInclude Include="Headers\Vector2D.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{790567E2-D528-45F6-8C39-4DF986BFA06C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AdventOfCode2020</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
