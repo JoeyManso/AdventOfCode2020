@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="Headers\AdventMath.h" />
     <ClInclude Include="Headers\AdventTimer.h" />
+    <ClInclude Include="Headers\AdventUtils.h" />
     <ClInclude Include="Headers\Days.h" />
     <ClInclude Include="Headers\MD5.h" />
     <ClInclude Include="Headers\Point2D.h" />
