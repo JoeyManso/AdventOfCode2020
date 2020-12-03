@@ -1,12 +1,16 @@
 #include "Days.h"
+#include <regex>
+
 using namespace std;
+
+const regex RX_PASSWORD_DATA_PATTERN(R"((\d+)-(\d+) ([a-z]): (\w+))");
 
 struct PasswordData
 {
-	string Password;
-	char RequiredChar;
 	size_t FirstNum = 0;
 	size_t SecondNum = 0;
+	char RequiredChar;
+	string Password;
 
 	/** Validates that the Required char count is inclusively between the first and second number */
 	bool IsPasswordValid1() const
@@ -30,18 +34,15 @@ struct PasswordData
 };
 
 PasswordData ArgToPasswordData(string _arg)
-{
+{	
+	smatch match;
+	regex_search(_arg, match, RX_PASSWORD_DATA_PATTERN);
+	
 	PasswordData passwordData;
-	size_t idxDash = _arg.find('-');
-	size_t idxColon = _arg.find(':');
-	size_t idxRequiredChar = idxColon - 1;
-	size_t maxCharLen = (idxRequiredChar - 1) - (idxDash + 1);
-
-	passwordData.Password = _arg.substr(idxColon + 2);
-	passwordData.RequiredChar = _arg[idxRequiredChar];
-	passwordData.FirstNum = stoi(_arg.substr(0,idxDash));
-	passwordData.SecondNum = stoi(_arg.substr(idxDash + 1, maxCharLen));
-
+	passwordData.FirstNum = stoi(match.str(1));
+	passwordData.SecondNum = stoi(match.str(2));
+	passwordData.RequiredChar = match.str(3)[0];
+	passwordData.Password = match.str(4);
 	return passwordData;
 }
 
