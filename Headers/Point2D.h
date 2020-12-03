@@ -1,6 +1,8 @@
 #ifndef POINT2D_H
 #define POINT2D_H
 
+#include "Vector2D.h"
+
 struct Point2D
 {
     int x;
@@ -32,6 +34,15 @@ struct Point2D
     Point2D operator+(const Point2D& p) const
     {
         return(Point2D(x + p.x, y + p.y));
+    }
+    Point2D operator+(const Vector2D& v) const
+    {
+        return(Point2D(x + v.x, y + v.y));
+    }
+    void operator+=(const Vector2D& v)
+    {
+        x += v.x;
+        y += v.y;
     }
 };
 
