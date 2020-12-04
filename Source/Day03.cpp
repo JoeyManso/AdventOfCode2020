@@ -47,11 +47,7 @@ void Run<Day03>(Part part, istream& is, ostream& os)
 				const string terrainLine = terrainLines[currentCoordinates.y];
 				
 				// Because the terrain pattern repeats horizontally, normalize the x coordinate by wrapping around when necessary
-				size_t normalizedX = currentCoordinates.x;
-				while (normalizedX >= terrainLine.length())
-				{
-					normalizedX -= terrainLine.length();
-				}
+				const size_t normalizedX = currentCoordinates.x % terrainLine.length();
 				if (terrainLine[normalizedX] == TREE_CHAR)
 				{
 					++treeCount;
