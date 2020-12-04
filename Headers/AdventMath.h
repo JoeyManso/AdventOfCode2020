@@ -45,4 +45,16 @@ inline T Clamp(const T& n, const T& lower, const T& upper)
     return Max(lower, Min(n, upper));
 }
 
+template <typename T>
+inline T InRangeInclusive(const T& n, const T& lower, const T& upper)
+{
+    return(n >= lower && n <= upper);
+}
+
+template <typename T>
+inline T InRangeExclusive(const T& n, const T& lower, const T& upper)
+{
+    return(n > lower && n < upper);
+}
+
 #endif // ADVENT_MATH_H
