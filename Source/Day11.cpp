@@ -36,6 +36,7 @@ struct SeatingGrid
 		return FLOOR;
 	}
 
+	/** Returns the total count of the given seat type */
 	int GetTotalCount(const char& seatType) const
 	{
 		int totalCount = 0;
@@ -54,76 +55,61 @@ struct SeatingGrid
 
 	/** Returns the total adjacent seats from the given indices, depending on PuzzlePart dictated rules */
 	int GetAdjacentOccupiedCount(int iGrid, int jGrid) const
-	{
-		int occupiedAdjacent = 0;
-		if (PuzzlePart == Part01)
+	{		
+		// Part 1: Search only surrounding adjacent seats
+		// Part 2: Search until any occupied/empty seat is found
+		const int maxSearchDist = PuzzlePart == Part01 ? 1 : static_cast<int>(CharGrid.size()) - 1;
+		char foundSeats[8] = {FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR};
+		for (int x = 1; x <= maxSearchDist; ++x)
 		{
-			// Returns immediately adjacent occupied seats
-			for (int i = iGrid - 1; i <= iGrid + 1; ++i)
+			// left
+			if (foundSeats[0] == FLOOR)
 			{
-				for (int j = jGrid - 1; j <= jGrid + 1; ++j)
-				{
-					if (!(i == iGrid && j == jGrid) && GetSeatType(i, j) == OCCUPIED)
-					{
-						++occupiedAdjacent;
-					}
-				}
+				foundSeats[0] = GetSeatType(iGrid - x, jGrid);
+			}
+			// right
+			if (foundSeats[1] == FLOOR)
+			{
+				foundSeats[1] = GetSeatType(iGrid + x, jGrid);
+			}
+			// up
+			if (foundSeats[2] == FLOOR )
+			{
+				foundSeats[2] = GetSeatType(iGrid, jGrid - x);
+			}
+			// down
+			if (foundSeats[3] == FLOOR )
+			{
+				foundSeats[3] = GetSeatType(iGrid, jGrid + x);
+			}
+			// left - up
+			if (foundSeats[4] == FLOOR )
+			{
+				foundSeats[4] = GetSeatType(iGrid - x, jGrid - x);
+			}
+			// right - up
+			if (foundSeats[5] == FLOOR )
+			{
+				foundSeats[5] = GetSeatType(iGrid + x, jGrid - x);
+			}
+			// left - down
+			if (foundSeats[6] == FLOOR)
+			{
+				foundSeats[6] =  GetSeatType(iGrid - x, jGrid + x);
+			}
+			// right - down
+			if (foundSeats[7] == FLOOR)
+			{
+				foundSeats[7] = GetSeatType(iGrid + x, jGrid + x);
 			}
 		}
-		else if (PuzzlePart == Part02)
-		{
-			// Searches for the first found occupied/empty seat in 8 directions
-			char foundSeats[8] = {FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR};
-			for (int x = 1; x < CharGrid.size(); ++x)
-			{
-				// left
-				if (foundSeats[0] == FLOOR)
-				{
-					foundSeats[0] = GetSeatType(iGrid - x, jGrid);
-				}
-				// right
-				if (foundSeats[1] == FLOOR)
-				{
-					foundSeats[1] = GetSeatType(iGrid + x, jGrid);
-				}
-				// up
-				if (foundSeats[2] == FLOOR )
-				{
-					foundSeats[2] = GetSeatType(iGrid, jGrid - x);
-				}
-				// down
-				if (foundSeats[3] == FLOOR )
-				{
-					foundSeats[3] = GetSeatType(iGrid, jGrid + x);
-				}
-				// left - up
-				if (foundSeats[4] == FLOOR )
-				{
-					foundSeats[4] = GetSeatType(iGrid - x, jGrid - x);
-				}
-				// right - up
-				if (foundSeats[5] == FLOOR )
-				{
-					foundSeats[5] = GetSeatType(iGrid + x, jGrid - x);
-				}
-				// left - down
-				if (foundSeats[6] == FLOOR)
-				{
-					foundSeats[6] =  GetSeatType(iGrid - x, jGrid + x);
-				}
-				// right - down
-				if (foundSeats[7] == FLOOR)
-				{
-					foundSeats[7] = GetSeatType(iGrid + x, jGrid + x);
-				}
-			}
 
-			// Returning the total occupied count
-			for (char foundSeat : foundSeats)
-			{
-				if (foundSeat == OCCUPIED)
-					++occupiedAdjacent;
-			}
+		// Return the total occupied count
+		int occupiedAdjacent = 0;
+		for (char foundSeat : foundSeats)
+		{
+			if (foundSeat == OCCUPIED)
+				++occupiedAdjacent;
 		}
 		return occupiedAdjacent;
 	}
