@@ -2,6 +2,7 @@
 #define VECTOR2D_H
 
 #include "AdventMath.h"
+#include "Point2D.h"
 
 class Vector2D {
 public:
@@ -58,13 +59,22 @@ public:
 	{
 		double newX = x * cos(radians) - y * sin(radians);
 		double newY = x * sin(radians) + y * cos(radians);
-		x = int(newX);
-		y = int(newY);
+		x = static_cast<int>(round(newX));
+		y = static_cast<int>(round(newY));
 	}
 
 	float Length() const
 	{
 		return sqrt(float(sqr(x) + sqr(y)));
+	}
+
+	void Normalize()
+	{
+		float l = Length();
+		float newX = static_cast<float>(x) / l;
+		float newY = static_cast<float>(y) / l;
+		x = static_cast<int>(round(newX));
+		y = static_cast<int>(round(newY));
 	}
 
 	static float Dist(const Vector2D& v1, const Vector2D& v2)
@@ -73,12 +83,12 @@ public:
 	}
 };
 
-Vector2D operator*(const float magnitude, const Vector2D v)
+static Vector2D operator*(const float magnitude, const Vector2D v)
 {
 	return(Vector2D(int(float(v.x) * magnitude), int(float(v.y) * magnitude)));
 };
 
-Vector2D operator*(const Vector2D v, const float magnitude)
+static Vector2D operator*(const Vector2D v, const float magnitude)
 {
 	return(Vector2D(int(float(v.x) * magnitude), int(float(v.y) * magnitude)));
 };

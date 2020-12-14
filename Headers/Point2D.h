@@ -27,10 +27,6 @@ struct Point2D
     {
         return(x != p.x || y != p.y);
     }
-    bool operator<(const Point2D& p) const
-    {
-        return y == p.y ? x < p.x : y < p.y;
-    }
     Point2D operator+(const Point2D& p) const
     {
         return(Point2D(x + p.x, y + p.y));
@@ -43,6 +39,19 @@ struct Point2D
     {
         x += v.x;
         y += v.y;
+    }
+    Vector2D operator-(const Point2D& p) const
+    {
+        return(Vector2D(x - p.x, y - p.y));
+    }
+    Point2D operator-(const Vector2D& v) const
+    {
+        return(Point2D(x - v.x, y - v.y));
+    }
+    void operator-=(const Vector2D& v)
+    {
+        x -= v.x;
+        y -= v.y;
     }
 };
 
