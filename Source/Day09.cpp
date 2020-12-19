@@ -1,4 +1,5 @@
 #include "Days.h"
+#include <algorithm>
 #include <vector>
 
 size_t PREAMBLE_SIZE_MAX = 25;
