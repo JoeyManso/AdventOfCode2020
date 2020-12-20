@@ -17,6 +17,11 @@ inline char CharToInt(const char& c)
 	return (c - '0');
 }
 
+static inline bool IsNumber(const string& s)
+{
+    return find_if(s.begin(),  s.end(), [](unsigned char c) { return !::isdigit(c); }) == s.end();
+}
+
 inline vector<string> split(string str, char delimiter)
 {
 	vector<string> strArray;

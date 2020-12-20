@@ -1,14 +1,10 @@
 #include "Days.h"
+#include "AdventUtils.h"
 #include <numeric>
 #include <regex>
 #include <vector>
 
 const regex RX_NUM(R"((\w+))");
-
-bool IsNumber(const string& s)
-{
-    return find_if(s.begin(),  s.end(), [](unsigned char c) { return !::isdigit(c); }) == s.end();
-}
 
 /** Returns the next bus time starting from the given departure */
 long long GetNextBusTime(long long departTime, int busId)
