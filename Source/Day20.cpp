@@ -1,9 +1,11 @@
 #include "Days.h"
 #include <array>
+#include <map>
 #include <regex>
 #include <vector>
 
 const regex RX_TILE_ID(R"(Tile (\d+):)");
+const size_t NUM_SIDES = 4;
 
 enum ESides
 {
@@ -11,12 +13,6 @@ enum ESides
 	BOTTOM = 1,
 	LEFT = 2,
 	RIGHT = 3,
-	MAX = 4
-};
-
-enum ETransformedTile
-{
-	BASE = 0,
 };
 
 struct ImageTile
